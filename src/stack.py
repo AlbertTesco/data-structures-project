@@ -7,8 +7,16 @@ class Node:
 
         :param data: данные, которые будут храниться в узле
         """
-        self.data = data
+        self.__data = data
         self.next_node = next_node
+
+    @property
+    def data(self):
+        return self.__data
+
+    @data.setter
+    def data(self, value):
+        self.__data = value
 
 
 class Stack:
@@ -31,6 +39,7 @@ class Stack:
             self.stack[0].next_node = None
         else:
             self.stack[-1].next_node = self.stack[-2]
+
         self.top = self.stack[-1]
 
     def pop(self):
@@ -40,4 +49,11 @@ class Stack:
 
         :return: данные удаленного элемента
         """
-        return self.stack.pop().data
+        data_from_first = self.stack.pop().data
+
+        if len(self.stack) == 1:
+            self.top = self.stack[0]
+        elif len(self.stack) == 0:
+            self.top = None
+
+        return data_from_first
