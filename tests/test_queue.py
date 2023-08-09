@@ -26,3 +26,4 @@ class TestQueue(unittest.TestCase):
         assert queue.dequeue() == 'data1'
         assert queue.dequeue() == 'data2'
         assert queue.dequeue() == 'data3'
+        assert queue.dequeue() is None

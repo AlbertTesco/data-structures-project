@@ -47,6 +47,9 @@ class Queue:
 
         :return: данные удаленного элемента
         """
+        if len(self.queue) == 0:
+            return None
+
         self.head = self.queue[0].next_node
 
         return self.queue.pop(0).data
