@@ -24,3 +24,15 @@ class TestLinkedList(unittest.TestCase):
         linked_list = LinkedList()
         linked_list.insert_beginning({'id': 1})
         self.assertEqual(str(linked_list), " {'id': 1} -> None")
+
+    def test_to_list_and_get_data_by_id(self):
+        linked_list = LinkedList()
+
+        linked_list.insert_beginning({'id': 1, 'username': 'lazzy508509'})
+        linked_list.insert_at_end({'id': 2, 'username': 'mik.roz'})
+        linked_list.insert_at_end({'id': 3, 'username': 'mosh_s'})
+        linked_list.insert_beginning({'id': 0, 'username': 'serebro'})
+        lst = linked_list.to_list()
+        assert len(lst) == 4
+        user_data = linked_list.get_data_by_id(3)
+        assert user_data == {'id': 3, 'username': 'mosh_s'}
